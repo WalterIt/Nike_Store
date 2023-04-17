@@ -1,5 +1,4 @@
 const SocialLinks = ({ icon }) => {
-  console.log(icon);
   return (
     <div>
       <img
