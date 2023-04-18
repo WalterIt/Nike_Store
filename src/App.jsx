@@ -1,3 +1,4 @@
+import Cart from "./components/Cart";
 import FlexContent from "./components/FlexContent";
 import Hero from "./components/Hero";
 import Sales from "./components/Sales";
@@ -18,6 +19,7 @@ const App = () => {
   return (
     <>
       <Navbar />
+      <Cart />
       <main className="flex flex-col gap-16 relative ">
         <Hero heroapi={heroapi} />
         <Sales endpoint={popularsales} ifExists />
