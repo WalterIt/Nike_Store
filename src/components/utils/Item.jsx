@@ -1,3 +1,6 @@
+import { useDispatch } from "react-redux";
+import { setAddItem, setOpenCart } from "../../redux/cartSlice";
+
 const Item = ({
   ifExists,
   id,
@@ -10,6 +13,30 @@ const Item = ({
   rating,
   price,
 }) => {
+  const dispatch = useDispatch();
+
+  const onAddToCart = () => {
+    const item = {
+      id,
+      color,
+      shadow,
+      title,
+      text,
+      img,
+      price,
+    };
+
+    dispatch(setAddItem(item));
+  };
+
+  const onCartToggle = () => {
+    dispatch(
+      setOpenCart({
+        cartState: true,
+      })
+    );
+  };
+
   return (
     <div
       className={`relative bg-gradient-to-b ${color} ${shadow} ${
@@ -58,6 +85,7 @@ const Item = ({
           <button
             type="button"
             className="bg-white/90 blur-effect-theme button-theme p-0.5 shadow shadow-slate-200 "
+            onClick={() => onAddToCart()}
           >
             <span className="icon-style text-slate-900">
               <svg
@@ -77,6 +105,10 @@ const Item = ({
           <button
             type="button"
             className="bg-white/90 blur-effect-theme button-theme px-2 py-1 font-semibold shadow shadow-slate-200 text-sm text-black "
+            onClick={() => {
+              onAddToCart();
+              onCartToggle();
+            }}
           >
             {btn}
           </button>
